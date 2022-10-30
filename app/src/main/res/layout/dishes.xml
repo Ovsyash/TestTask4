@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product"
+    android:layout_marginTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_dish"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_marginBottom="16dp"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_dish"
+            android:layout_marginStart="157dp"
+            android:textColor="#222831"
+            android:textSize="16sp"
+            tools:text="Название блюда" />
+
+        <Button
+            android:layout_width="87dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="241dp"
+            android:layout_marginTop="103dp"
+            android:background="@drawable/button_price"
+            android:text="@string/price"
+            android:textAllCaps="false"
+            android:textColor="@color/button_price" />
+
+</FrameLayout>
