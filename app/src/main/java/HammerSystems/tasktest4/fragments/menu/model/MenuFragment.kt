@@ -1,9 +1,12 @@
 package HammerSystems.tasktest4.fragments.menu.model
 
 import HammerSystems.tasktest4.R
+import HammerSystems.tasktest4.data.banners.Banner
+import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Category
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.FragmentMenuBinding
+import HammerSystems.tasktest4.fragments.menu.adapter.BannersAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.CategoriesAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.DishesAdapter
 import android.os.Bundle
@@ -22,7 +25,8 @@ class MenuFragment : Fragment() {
     lateinit var dishesadapter: DishesAdapter
     lateinit var categoriesRecyclerView: RecyclerView
     lateinit var categoriesadapter: CategoriesAdapter
-
+    lateinit var bannersRecyclerView: RecyclerView
+    lateinit var bannersadapter: BannersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +41,7 @@ class MenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initDishesViewModel()
         initCategoriesViewModel()
+        banners()
     }
 
     private fun initDishesViewModel() {
@@ -47,7 +52,6 @@ class MenuFragment : Fragment() {
         }
 
         menuViewModel.getDishesObserver().observe(viewLifecycleOwner) {
-            Log.d("TAG", "${it.meals.size}")
 
             val items = it.meals.size
             Log.d("items", "$items")
@@ -82,18 +86,18 @@ class MenuFragment : Fragment() {
             menuViewModel.getCategoriesListData()
         }
 
-//        menuViewModel.getCategoriesObserver().observe(viewLifecycleOwner) {
-//
-//            val items = it.categories.size
-//            for (item in 0 until items) {
-//                menuViewModel.categoriesInsert(
-//                    Category(
-//                        idCategory = it.categories[item].idCategory,
-//                        strCategory = it.categories[item].strCategory,
-//                    )
-//                )
-//            }
-//        }
+        menuViewModel.getCategoriesObserver().observe(viewLifecycleOwner) {
+
+            val items = it.categories.size
+            for (item in 0 until items) {
+                menuViewModel.categoriesInsert(
+                    Category(
+                        idCategory = it.categories[item].idCategory,
+                        strCategory = it.categories[item].strCategory,
+                    )
+                )
+            }
+        }
 
         categoriesRecyclerView = binding.categoriesRecyclerView
         categoriesadapter = CategoriesAdapter()
@@ -102,5 +106,16 @@ class MenuFragment : Fragment() {
         menuViewModel.getCategoriesAllNotes().observe(viewLifecycleOwner) {
             categoriesadapter.setCategoriesList(it)
         }
+    }
+
+    private fun banners() {
+        val banner = Banners.getBannerList()
+
+        bannersRecyclerView = binding.bannerRecyclerView
+        bannersadapter = BannersAdapter()
+        bannersRecyclerView.adapter = bannersadapter
+        bannersadapter.setBannersList(banner)
+
+
     }
 }

@@ -4,6 +4,8 @@ import HammerSystems.tasktest4.api.categories.CategoriesApi
 import HammerSystems.tasktest4.api.categories.CategoriesRetrofit
 import HammerSystems.tasktest4.api.dishes.DishesApi
 import HammerSystems.tasktest4.api.dishes.DishesRetrofit
+import HammerSystems.tasktest4.data.banners.Banner
+import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Categories
 import HammerSystems.tasktest4.data.categories.Category
 import HammerSystems.tasktest4.data.dishes.Dishes
