@@ -16,7 +16,7 @@ abstract class CategoriesDatabase: RoomDatabase() {
         @Synchronized
         fun getCategoriesInstance(context: Context): CategoriesDatabase{
             return if (categoriesDatabase == null){
-                categoriesDatabase = Room.databaseBuilder(context, CategoriesDatabase::class.java, "dishesDatabase").build()
+                categoriesDatabase = Room.databaseBuilder(context, CategoriesDatabase::class.java, "categoriesDatabase").build()
                 categoriesDatabase as CategoriesDatabase
             } else {
                 categoriesDatabase as CategoriesDatabase
