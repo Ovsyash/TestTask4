@@ -1,6 +1,7 @@
 package HammerSystems.tasktest4.fragments.menu.model
 
 import HammerSystems.tasktest4.R
+import HammerSystems.tasktest4.ScannerActivity
 import HammerSystems.tasktest4.data.banners.Banner
 import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Category
@@ -9,14 +10,24 @@ import HammerSystems.tasktest4.databinding.FragmentMenuBinding
 import HammerSystems.tasktest4.fragments.menu.adapter.BannersAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.CategoriesAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.DishesAdapter
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_menu.qr_code
+import kotlinx.android.synthetic.main.fragment_menu.view.qr_code
 
 class MenuFragment : Fragment() {
 
@@ -27,6 +38,11 @@ class MenuFragment : Fragment() {
     lateinit var categoriesadapter: CategoriesAdapter
     lateinit var bannersRecyclerView: RecyclerView
     lateinit var bannersadapter: BannersAdapter
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            Toast.makeText(context, "permissions is $isGranted", Toast.LENGTH_SHORT).show()
+        }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +51,7 @@ class MenuFragment : Fragment() {
     ): View? {
         binding = FragmentMenuBinding.inflate(layoutInflater, container, false)
         return binding.root
+        binding.qrCode
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,8 +64,15 @@ class MenuFragment : Fragment() {
     private fun initDishesViewModel() {
         val menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
         menuViewModel.initDishesDatabase()
-        if (context?.let { menuViewModel.internetCheck(it) } == true){
+        if (context?.let { menuViewModel.internetCheck(it) } == true) {
             menuViewModel.getDishesListData()
+        }
+
+        binding.apply {
+            qr_code.setOnClickListener {
+                checkPermissions()
+                startActivity(Intent(context, ScannerActivity::class.java))
+            }
         }
 
         menuViewModel.getDishesObserver().observe(viewLifecycleOwner) {
@@ -82,7 +106,7 @@ class MenuFragment : Fragment() {
     private fun initCategoriesViewModel() {
         val menuViewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
         menuViewModel.initCategoriesDatabase()
-        if (context?.let { menuViewModel.internetCheck(it) } == true){
+        if (context?.let { menuViewModel.internetCheck(it) } == true) {
             menuViewModel.getCategoriesListData()
         }
 
@@ -115,7 +139,18 @@ class MenuFragment : Fragment() {
         bannersadapter = BannersAdapter()
         bannersRecyclerView.adapter = bannersadapter
         bannersadapter.setBannersList(banner)
+    }
 
-
+    private fun checkPermissions() {
+        if (context?.let {
+                ContextCompat.checkSelfPermission(
+                    it,
+                    Manifest.permission.CAMERA
+                )
+            } == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(context, "permissions is Granted", Toast.LENGTH_SHORT).show()
+        } else {
+            launcher.launch(Manifest.permission.CAMERA)
+        }
     }
 }

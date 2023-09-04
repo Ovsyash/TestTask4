@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.dishes.view.*
+import kotlinx.android.synthetic.main.fragment_menu.view.qr_code
+import kotlin.random.Random
 
 @Suppress("UNREACHABLE_CODE")
 class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
@@ -22,6 +24,8 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.dishes, parent, false)
 
+
+
         return DishesHolder(view)
     }
 
@@ -29,10 +33,10 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
 
         holder.itemView.apply {
             title_dish.text = listDishes[position].strMeal
-
             Glide.with(this)
                 .load(listDishes[position].strMealThumb)
                 .into(image_dish)
+
         }
     }
 
