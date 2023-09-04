@@ -21,6 +21,4 @@
 
     <style name="Theme.TaskTest4.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="Theme.TaskTest4.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
 </resources>
