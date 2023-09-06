@@ -26,8 +26,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.dishes.price_dishes
 import kotlinx.android.synthetic.main.fragment_menu.qr_code
 import kotlinx.android.synthetic.main.fragment_menu.view.qr_code
+import kotlin.random.Random
 
 class MenuFragment : Fragment() {
 
@@ -85,6 +87,7 @@ class MenuFragment : Fragment() {
                         idMeal = it.meals[item].idMeal,
                         strMeal = it.meals[item].strMeal,
                         strMealThumb = it.meals[item].strMealThumb,
+                        priceDishes = Random.nextInt(100, 500).toString()
                     )
                 )
             }

@@ -33,10 +33,10 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
 
         holder.itemView.apply {
             title_dish.text = listDishes[position].strMeal
+            price_dishes.text = "${listDishes[position].priceDishes} р"
             Glide.with(this)
                 .load(listDishes[position].strMealThumb)
                 .into(image_dish)
-
         }
     }
 

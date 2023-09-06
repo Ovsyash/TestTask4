@@ -25,6 +25,7 @@
             tools:text="Название блюда" />
 
         <Button
+            android:id="@+id/price_dishes"
             android:layout_width="87dp"
             android:layout_height="32dp"
             android:layout_marginStart="241dp"
