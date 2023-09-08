@@ -24,8 +24,6 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.dishes, parent, false)
 
-
-
         return DishesHolder(view)
     }
 
@@ -49,5 +47,4 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
         listDishes = list
         notifyDataSetChanged()
     }
-
 }

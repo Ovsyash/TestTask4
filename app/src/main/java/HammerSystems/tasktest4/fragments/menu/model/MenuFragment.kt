@@ -7,6 +7,7 @@ import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Category
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.FragmentMenuBinding
+import HammerSystems.tasktest4.fragments.basket.model.BasketFragment
 import HammerSystems.tasktest4.fragments.menu.adapter.BannersAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.CategoriesAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.DishesAdapter
@@ -24,6 +25,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.dishes.price_dishes
@@ -45,15 +47,20 @@ class MenuFragment : Fragment() {
             Toast.makeText(context, "permissions is $isGranted", Toast.LENGTH_SHORT).show()
         }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMenuBinding.inflate(layoutInflater, container, false)
         return binding.root
-        binding.qrCode
+
+//        price_dishes.setOnClickListener {
+//            val fragmentBasket = BasketFragment()
+//            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+//            transaction.replace(R.id.basketFragment, fragmentBasket)
+//            transaction.commit()
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -87,7 +94,7 @@ class MenuFragment : Fragment() {
                         idMeal = it.meals[item].idMeal,
                         strMeal = it.meals[item].strMeal,
                         strMealThumb = it.meals[item].strMealThumb,
-                        priceDishes = Random.nextInt(100, 500).toString()
+                        priceDishes = Random.nextInt(300, 500).toString()
                     )
                 )
             }

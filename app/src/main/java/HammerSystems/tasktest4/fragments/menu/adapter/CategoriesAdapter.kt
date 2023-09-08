@@ -39,5 +39,4 @@ class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.CategoriesHol
         listCategories = list
         notifyDataSetChanged()
     }
-
 }

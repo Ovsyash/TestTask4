@@ -48,7 +48,6 @@ class MenuViewModel(application: Application) : AndroidViewModel(application) {
         } else {
             return cmg.activeNetworkInfo?.isConnectedOrConnecting == true
         }
-
         return false
     }
 
@@ -105,6 +104,5 @@ class MenuViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             categoriesRepository.insertCategories(categories)
         }
-
 }
 
