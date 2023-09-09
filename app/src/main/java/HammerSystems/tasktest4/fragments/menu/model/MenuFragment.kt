@@ -8,6 +8,7 @@ import HammerSystems.tasktest4.data.categories.Category
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.FragmentMenuBinding
 import HammerSystems.tasktest4.fragments.basket.model.BasketFragment
+import HammerSystems.tasktest4.fragments.dishe.DisheFragment
 import HammerSystems.tasktest4.fragments.menu.adapter.BannersAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.CategoriesAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.DishesAdapter

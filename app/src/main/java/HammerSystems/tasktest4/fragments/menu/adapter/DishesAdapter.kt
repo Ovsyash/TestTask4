@@ -1,11 +1,14 @@
 package HammerSystems.tasktest4.fragments.menu.adapter
 
 import HammerSystems.tasktest4.R
+import HammerSystems.tasktest4.data.dishe.Dishe
 import HammerSystems.tasktest4.data.dishes.Meal
+import HammerSystems.tasktest4.fragments.dishe.DisheFragment
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.dishes.view.*
@@ -18,6 +21,7 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
     var listDishes = emptyList<Meal>()
 
     class DishesHolder(view: View) : RecyclerView.ViewHolder(view) {
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishesHolder {
@@ -36,6 +40,20 @@ class DishesAdapter() : RecyclerView.Adapter<DishesAdapter.DishesHolder>() {
                 .load(listDishes[position].strMealThumb)
                 .into(image_dish)
         }
+
+//        holder.itemView.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View?) {
+//                lateinit var dishesItem: HammerSystems.tasktest4.data.dishe.Meal
+//
+//                val activity = v!!.context as AppCompatActivity
+//                val fragmentBasket = DisheFragment.newInstance(urlDishe = dishesItem.idMeal.toInt())
+//                activity.supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.basketFragment, fragmentBasket)
+//                    .addToBackStack(null)
+//                    .commit()
+//            }
+//        })
     }
 
     override fun getItemCount(): Int {

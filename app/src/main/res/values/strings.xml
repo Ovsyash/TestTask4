@@ -9,6 +9,11 @@
     <string name="name">Name: %1$s</string>
     <string name="species">Species: %1$s</string>
     <string name="dishes_description">Описание блюда</string>
+    <string name="strMeal">Название: %1$s</string>
+    <string name="strArea">Страна: %1$s</string>
+    <string name="strCategory">Категория: %1$s</string>
+    <string name="strIngredient1">Ингредиент: %1$s</string>
+    <string name="strInstructions">Инструкция: %1$s</string>
     <string-array name="city">
         <item>Москва</item>
         <item>Курск</item>
