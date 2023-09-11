@@ -2,13 +2,12 @@ package HammerSystems.tasktest4.fragments.menu.model
 
 import HammerSystems.tasktest4.R
 import HammerSystems.tasktest4.ScannerActivity
-import HammerSystems.tasktest4.data.banners.Banner
 import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Category
+import HammerSystems.tasktest4.data.dishe.MealDish
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.FragmentMenuBinding
-import HammerSystems.tasktest4.fragments.basket.model.BasketFragment
-import HammerSystems.tasktest4.fragments.dishe.DisheFragment
+import HammerSystems.tasktest4.fragments.dish.DishFragment
 import HammerSystems.tasktest4.fragments.menu.adapter.BannersAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.CategoriesAdapter
 import HammerSystems.tasktest4.fragments.menu.adapter.DishesAdapter
@@ -21,17 +20,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.dishes.price_dishes
 import kotlinx.android.synthetic.main.fragment_menu.qr_code
-import kotlinx.android.synthetic.main.fragment_menu.view.qr_code
 import kotlin.random.Random
 
 class MenuFragment : Fragment() {
@@ -43,6 +37,9 @@ class MenuFragment : Fragment() {
     lateinit var categoriesadapter: CategoriesAdapter
     lateinit var bannersRecyclerView: RecyclerView
     lateinit var bannersadapter: BannersAdapter
+//    private val adapter: DishesAdapter() {
+//        clickDish()  // тут тоже не оч понятно
+//    }
     private val launcher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             Toast.makeText(context, "permissions is $isGranted", Toast.LENGTH_SHORT).show()
@@ -55,13 +52,6 @@ class MenuFragment : Fragment() {
     ): View {
         binding = FragmentMenuBinding.inflate(layoutInflater, container, false)
         return binding.root
-
-//        price_dishes.setOnClickListener {
-//            val fragmentBasket = BasketFragment()
-//            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-//            transaction.replace(R.id.basketFragment, fragmentBasket)
-//            transaction.commit()
-//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -102,7 +92,7 @@ class MenuFragment : Fragment() {
         }
 
         dishesRecyclerView = binding.dishesRecyclerView
-        dishesadapter = DishesAdapter()
+        dishesadapter = DishesAdapter() // зачем это?
         dishesRecyclerView.adapter = dishesadapter
 
         menuViewModel.menuDishesLiveData.observe(viewLifecycleOwner) {
@@ -151,6 +141,16 @@ class MenuFragment : Fragment() {
         bannersRecyclerView.adapter = bannersadapter
         bannersadapter.setBannersList(banner)
     }
+
+//    private fun clickDish(dish: MealDish) {
+//        val fragmentBasket = DishFragment.newInstance(dish.idMeal)
+//
+//        parentFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.basketFragment, fragmentBasket)
+//            .addToBackStack(null)
+//            .commit()
+//    }
 
     private fun checkPermissions() {
         if (context?.let {

@@ -1,6 +1,6 @@
 package HammerSystems.tasktest4.data.dishe
 
-data class Meal(
+data class MealDish(
     val idMeal: String,
     val strArea: String,
     val strCategory: String,

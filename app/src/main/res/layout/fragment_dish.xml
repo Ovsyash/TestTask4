@@ -21,7 +21,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/titleDishe"
+        android:id="@+id/titleDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -30,7 +30,7 @@
         tools:text="Name" />
 
     <TextView
-        android:id="@+id/countryDishe"
+        android:id="@+id/countryDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -38,7 +38,7 @@
         tools:text="Status" />
 
     <TextView
-        android:id="@+id/categoryDishe"
+        android:id="@+id/categoryDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -46,7 +46,7 @@
         tools:text="Species" />
 
     <TextView
-        android:id="@+id/ingredientsDishe"
+        android:id="@+id/ingredientsDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -60,7 +60,7 @@
         android:layout_marginEnd="10dp">
 
     <TextView
-        android:id="@+id/instructionDishe"
+        android:id="@+id/instructionDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
