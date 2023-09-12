@@ -4,7 +4,6 @@ import HammerSystems.tasktest4.R
 import HammerSystems.tasktest4.ScannerActivity
 import HammerSystems.tasktest4.data.banners.Banners
 import HammerSystems.tasktest4.data.categories.Category
-import HammerSystems.tasktest4.data.dishe.MealDish
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.FragmentMenuBinding
 import HammerSystems.tasktest4.fragments.dish.DishFragment
@@ -38,7 +37,7 @@ class MenuFragment : Fragment() {
     lateinit var bannersRecyclerView: RecyclerView
     lateinit var bannersadapter: BannersAdapter
     private val dishesadapter = DishesAdapter() {
-        clickDish(it)  // тут тоже не оч понятно
+        clickDish(it)
     }
     private val launcher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -92,7 +91,6 @@ class MenuFragment : Fragment() {
         }
 
         dishesRecyclerView = binding.dishesRecyclerView
-//        dishesadapter = DishesAdapter() // зачем это?
         dishesRecyclerView.adapter = dishesadapter
 
         menuViewModel.menuDishesLiveData.observe(viewLifecycleOwner) {
@@ -143,11 +141,12 @@ class MenuFragment : Fragment() {
     }
 
     private fun clickDish(dish: Meal) {
-        val fragmentBasket = DishFragment.newInstance(dish.idMeal)
+        val fragmentDish = DishFragment.newInstance(urlDish = dish.idMeal)
+        //Log.d("idMeal", dish.idMeal)
 
         parentFragmentManager
             .beginTransaction()
-            .replace(R.id.basketFragment, fragmentBasket)
+            .replace(R.id.fragmentHost, fragmentDish)
             .addToBackStack(null)
             .commit()
     }

@@ -3,6 +3,7 @@ package HammerSystems.tasktest4.fragments.menu.adapter
 import HammerSystems.tasktest4.data.dishes.Meal
 import HammerSystems.tasktest4.databinding.DishesBinding
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
