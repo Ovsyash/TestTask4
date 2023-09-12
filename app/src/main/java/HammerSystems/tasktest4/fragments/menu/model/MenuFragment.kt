@@ -32,14 +32,14 @@ class MenuFragment : Fragment() {
 
     lateinit var binding: FragmentMenuBinding
     lateinit var dishesRecyclerView: RecyclerView
-    lateinit var dishesadapter: DishesAdapter
+//    lateinit var dishesadapter: DishesAdapter
     lateinit var categoriesRecyclerView: RecyclerView
     lateinit var categoriesadapter: CategoriesAdapter
     lateinit var bannersRecyclerView: RecyclerView
     lateinit var bannersadapter: BannersAdapter
-//    private val adapter: DishesAdapter() {
-//        clickDish()  // тут тоже не оч понятно
-//    }
+    private val dishesadapter = DishesAdapter() {
+        clickDish(it)  // тут тоже не оч понятно
+    }
     private val launcher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             Toast.makeText(context, "permissions is $isGranted", Toast.LENGTH_SHORT).show()
@@ -92,7 +92,7 @@ class MenuFragment : Fragment() {
         }
 
         dishesRecyclerView = binding.dishesRecyclerView
-        dishesadapter = DishesAdapter() // зачем это?
+//        dishesadapter = DishesAdapter() // зачем это?
         dishesRecyclerView.adapter = dishesadapter
 
         menuViewModel.menuDishesLiveData.observe(viewLifecycleOwner) {
@@ -142,15 +142,15 @@ class MenuFragment : Fragment() {
         bannersadapter.setBannersList(banner)
     }
 
-//    private fun clickDish(dish: MealDish) {
-//        val fragmentBasket = DishFragment.newInstance(dish.idMeal)
-//
-//        parentFragmentManager
-//            .beginTransaction()
-//            .replace(R.id.basketFragment, fragmentBasket)
-//            .addToBackStack(null)
-//            .commit()
-//    }
+    private fun clickDish(dish: Meal) {
+        val fragmentBasket = DishFragment.newInstance(dish.idMeal)
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.basketFragment, fragmentBasket)
+            .addToBackStack(null)
+            .commit()
+    }
 
     private fun checkPermissions() {
         if (context?.let {

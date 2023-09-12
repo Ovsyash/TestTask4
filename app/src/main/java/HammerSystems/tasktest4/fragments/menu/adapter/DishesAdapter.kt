@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.dishes.view.*
 
 @Suppress("UNREACHABLE_CODE")
 class DishesAdapter(
-//    val clickDish: (Meal) -> Unit // Пока непонятно как реализовать анонимную функцию
+    val clickDish: (Meal) -> Unit
 ) : RecyclerView.Adapter<DishesAdapter.DishesViewHolder>() {
 
     var listDishes = emptyList<Meal>()
@@ -28,7 +28,7 @@ class DishesAdapter(
     override fun onBindViewHolder(holder: DishesViewHolder, position: Int) {
         val item = listDishes[position]
         holder.binding.apply {
-//            root.setOnClickListener { clickDish(item) } //Почему-то не определяется item
+            root.setOnClickListener { clickDish(item) }
             titleDish.text = item.strMeal
             priceDishes.text = "${item.priceDishes} р"
             Glide.with(imageDish)
