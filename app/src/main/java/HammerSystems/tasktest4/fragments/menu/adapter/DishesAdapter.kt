@@ -28,6 +28,7 @@ class DishesAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DishesViewHolder, position: Int) {
         val item = listDishes[position]
+        Log.d("item", item.toString())
         holder.binding.apply {
             root.setOnClickListener { clickDish(item) }
             titleDish.text = item.strMeal

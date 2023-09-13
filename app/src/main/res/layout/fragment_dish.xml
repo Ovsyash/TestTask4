@@ -10,7 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:cardCornerRadius="30dp">
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+>
 
         <ImageView
             android:id="@+id/photoDish"
@@ -27,7 +29,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="55dp"
         tools:ignore="MissingConstraints"
-        tools:text="Name" />
+        tools:text="@string/strMeal" />
 
     <TextView
         android:id="@+id/countryDish"
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginStart="55dp"
-        tools:text="Status" />
+        tools:text="@string/strArea" />
 
     <TextView
         android:id="@+id/categoryDish"
@@ -43,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginStart="55dp"
-        tools:text="Species" />
+        tools:text="@string/strCategory" />
 
     <TextView
         android:id="@+id/ingredientsDish"
@@ -51,21 +53,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginStart="55dp"
-        tools:text="Gender" />
+        tools:text="@string/strIngredient1" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_height="match_parent"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="65dp">
 
     <TextView
         android:id="@+id/instructionDish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="55dp"
-        tools:text="Last location" />
+        tools:text="@string/strInstructions" />
 
     </ScrollView>
 

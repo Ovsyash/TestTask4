@@ -68,6 +68,7 @@ class DishFragment : Fragment() {
 
             val fragment = DishFragment()
             fragment.arguments = args
+            Log.d("Fragment", fragment.toString())
             return fragment
         }
     }
