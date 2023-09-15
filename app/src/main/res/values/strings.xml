@@ -14,6 +14,7 @@
     <string name="strCategory">Категория: %1$s</string>
     <string name="strIngredient1">Ингредиент: %1$s</string>
     <string name="strInstructions">Инструкция: %1$s</string>
+    <string name="add_basket"> Добавить в корзину </string>
     <string-array name="city">
         <item>Москва</item>
         <item>Курск</item>
